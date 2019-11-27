@@ -66,5 +66,32 @@ function crypto(input, key) {
   }
   return output
 }
-
 console.log(crypto('wikipedia', 'crypto'))
+
+function prop_access(object, path) {
+  if (!path || path.length == 0) return object;
+  splittedPath = path.split('.');
+  function testKey(currentObject, value) {
+    if (typeof currentObject !== 'object') return false;
+    return Object.keys(currentObject).includes(value);
+  }
+  var testedObject = object;
+  var testedKeys = []
+  for (key of splittedPath) {
+    testedKeys.push(key);
+    if (testKey(testedObject, key)) {
+      if (typeof testedObject[key] == 'object') {
+        testedObject = {...testedObject[key]}
+      }
+    } else {
+      return `${testedKeys.join('.')} not exist`;
+    }
+  }
+  return testedObject[splittedPath[splittedPath.length - 1]];
+}
+prairie = {
+  animal: { type: { name: 'chien'}}
+}
+console.log(prop_access(prairie, 'animal.type.name'))
+console.log(prop_access(prairie, 'animal.gender'))
+console.log(prop_access(prairie, null))
