@@ -14,13 +14,13 @@ function ucfirst(input) {
 
 function capitalize(input) {
   if (!input || typeof input != 'string') return ""
-  return input.toLowerCase().trim().split(' ').map(word => {
+  return input.toLowerCase().split(' ').map(word => {
     word = word.split("")
-    word[0] = word[0].toUpperCase();
+    word[0] = word[0] ? word[0].toUpperCase() : word[0];
     return word.join('');
   }).join(' ')
 }
-// console.log(capitalize('hello world'))
+console.log(capitalize(' test'))
 // console.log(capitalize('_hello world'))
 
 function camelCase(input) {
@@ -72,18 +72,21 @@ function yoda(input) {
 function vig(input, key) {
   if (!input || typeof input != 'string') return ""
   alphabet = "abcdefghijklmnopqrstuvwxyz".split('')
-  input = input.toLowerCase()
+  input = input.toLowerCase().split(' ')
   key = formatString(key)
   output = ''
-  for (i = 0; i < input.length; i++) {
-    inputLetter = input[i];
-    keyLetter = key[i % key.length];
-    alphabetIndex = alphabet.indexOf(inputLetter) + alphabet.indexOf(keyLetter)
-    output += alphabet[alphabetIndex % alphabet.length]
-  }
-  return output
+  return input.map(word => {
+    output = ''
+    for (i = 0; i < word.length; i++) {
+      inputLetter = word[i];
+      keyLetter = key[i % key.length];
+      alphabetIndex = alphabet.indexOf(inputLetter) + alphabet.indexOf(keyLetter)
+      output += alphabet[alphabetIndex % alphabet.length]
+    }
+    return output
+  }).join(' ')
 }
-// console.log(vig('wikipedia', 'crypto'))
+// console.log(vig('wikipedia is shit', 'crypto'))
 // console.log(vig('antiConstiTutioNnellement','foo'))
 
 function prop_access(object, path) {
@@ -107,10 +110,10 @@ function prop_access(object, path) {
   }
   return testedObject[key] ? testedObject[key] : testedObject
 }
-prairie = {
-  animal: { type: { name: 'chien'}}
-}
-console.log(prop_access(prairie, 'animal.type.name'))
-console.log(prop_access(prairie, 'animal.type'))
-console.log(prop_access(prairie, 'animal.gender'))
-console.log(prop_access(prairie, null))
+// prairie = {
+//   animal: { type: { name: 'chien'}}
+// }
+// console.log(prop_access(prairie, 'animal.type.name'))
+// console.log(prop_access(prairie, 'animal.type'))
+// console.log(prop_access(prairie, 'animal.gender'))
+// console.log(prop_access(prairie, null))
