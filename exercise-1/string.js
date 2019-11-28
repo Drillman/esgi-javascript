@@ -4,7 +4,7 @@ function formatString(input) {
 
 function ucfirst(input) {
   if (!input || !input || typeof input != 'string') return ""
-  input = input.trim().split("")
+  input = input.split("")
   input[0] = input[0].toUpperCase()
   return input.join("");
 }
@@ -14,7 +14,7 @@ function ucfirst(input) {
 
 function capitalize(input) {
   if (!input || typeof input != 'string') return ""
-  return input.toLowerCase().split(' ').map(word => {
+  return input.toLowerCase().trim().split(' ').map(word => {
     word = word.split("")
     word[0] = word[0].toUpperCase();
     return word.join('');
@@ -64,7 +64,7 @@ function verlan(input) {
 // console.log(verlan('hello world'))
 
 function yoda(input) {
-  if (!input || typeof input != 'string') return input
+  if (!input || typeof input != 'string') return ""
   return input.split(' ').reverse().join(' ')
 }
 // console.log(yoda('Hello world'))
