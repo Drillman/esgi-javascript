@@ -1,20 +1,26 @@
 function ucfirst(input) {
-  input = input.split("")
+  if (typeof input != 'string') return input
+  input = input.toLowerCase().split("")
   input[0] = input[0].toUpperCase()
   return input.join("");
 }
 console.log(ucfirst('hello world'))
+console.log(ucfirst(null))
+console.log(ucfirst({test: 'hello world'}))
 
 function capitalize(input) {
-  return input.split(' ').map(word => {
+  if (typeof input != 'string') return input
+  return input.toLowerCase().split(' ').map(word => {
     word = word.split("")
     word[0] = word[0].toUpperCase();
     return word.join('');
   }).join(' ')
 }
 console.log(capitalize('hello world'))
+console.log(capitalize('_hello world'))
 
 function camelCase(input) {
+  if (typeof input != 'string') return input
   return input.split(' ').map(word => {
     word = word.split("")
     word[0] = word[0].toUpperCase();
@@ -24,11 +30,13 @@ function camelCase(input) {
 console.log(camelCase('hello world'))
 
 function snake_case(input) {
+  if (typeof input != 'string') return input
   return input.split(" ").join("_")
 }
 console.log(snake_case('hello world'))
 
 function leet(input) {
+  if (typeof input != 'string') return input
   vowel = {
     'a': 4,
     'e': 3,
@@ -46,16 +54,19 @@ function leet(input) {
 console.log(leet('anaconda'))
 
 function verlan(input) {
+  if (typeof input != 'string') return input
   return input.split(' ').map(word => word.split('').reverse().join('')).join(' ')
 }
 console.log(verlan('hello world'))
 
 function yoda(input) {
+  if (typeof input != 'string') return input
   return input.split(' ').reverse().join(' ')
 }
 console.log(yoda('Hello world'))
 
-function crypto(input, key) {
+function vig(input, key) {
+  if (typeof input != 'string') return input
   alphabet = "abcdefghijklmnopqrstuvwxyz".split('')
   output = ''
   for (i = 0; i < input.length; i++) {
@@ -66,7 +77,7 @@ function crypto(input, key) {
   }
   return output
 }
-console.log(crypto('wikipedia', 'crypto'))
+console.log(vig('wikipedia', 'crypto'))
 
 function prop_access(object, path) {
   if (!path || path.length == 0) return object;
