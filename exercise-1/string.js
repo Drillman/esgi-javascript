@@ -20,7 +20,7 @@ function capitalize(input) {
     return word.join('');
   }).join(' ')
 }
-console.log(capitalize(' test'))
+// console.log(capitalize(' test'))
 // console.log(capitalize('_hello world'))
 
 function camelCase(input) {
@@ -75,17 +75,21 @@ function vig(input, key) {
   input = input.toLowerCase().split(' ')
   key = formatString(key)
   output = ''
+  keyIndex = 0
   return input.map(word => {
     output = ''
     for (i = 0; i < word.length; i++) {
       inputLetter = word[i];
-      keyLetter = key[i % key.length];
+      keyLetter = key[keyIndex % key.length];
+      keyIndex ++
       alphabetIndex = alphabet.indexOf(inputLetter) + alphabet.indexOf(keyLetter)
       output += alphabet[alphabetIndex % alphabet.length]
     }
     return output
   }).join(' ')
 }
+// console.log("hna prueul xqrs prof lknqxi ohmr due no ieqt kewqsylrnp rsrn zibh gcy g dft fucge qn dhwv")
+// console.log(vig('une phrase tres tres longue mais qui ne veut absolument rien dire car c est juste un test','nawakdecheznawak'))
 // console.log(vig('wikipedia is shit', 'crypto'))
 // console.log(vig('antiConstiTutioNnellement','foo'))
 
