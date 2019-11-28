@@ -1,6 +1,10 @@
+function formatString(input) {
+  return input.trim().toLowerCase();
+}
+
 function ucfirst(input) {
-  if (typeof input != 'string') return input
-  input = input.toLowerCase().split("")
+  if (!input || !input || typeof input != 'string') return ""
+  input = input.trim().split("")
   input[0] = input[0].toUpperCase()
   return input.join("");
 }
@@ -9,8 +13,8 @@ console.log(ucfirst(null))
 console.log(ucfirst({test: 'hello world'}))
 
 function capitalize(input) {
-  if (typeof input != 'string') return input
-  return input.toLowerCase().split(' ').map(word => {
+  if (!input || typeof input != 'string') return ""
+  return formatString(input).split(' ').map(word => {
     word = word.split("")
     word[0] = word[0].toUpperCase();
     return word.join('');
@@ -20,8 +24,8 @@ console.log(capitalize('hello world'))
 console.log(capitalize('_hello world'))
 
 function camelCase(input) {
-  if (typeof input != 'string') return input
-  return input.split(' ').map(word => {
+  if (!input || typeof input != 'string') return ""
+  return formatString(input).replace('_', ' ').split(' ').map(word => {
     word = word.split("")
     word[0] = word[0].toUpperCase();
     return word.join('');
@@ -30,13 +34,13 @@ function camelCase(input) {
 console.log(camelCase('hello world'))
 
 function snake_case(input) {
-  if (typeof input != 'string') return input
+  if (!input || typeof input != 'string') return ""
   return input.split(" ").join("_")
 }
 console.log(snake_case('hello world'))
 
 function leet(input) {
-  if (typeof input != 'string') return input
+  if (!input || typeof input != 'string') return ""
   vowel = {
     'a': 4,
     'e': 3,
@@ -45,7 +49,7 @@ function leet(input) {
     'u': '(_)',
     'y': 7
   };
-  return input.replace(' ','').split('').map(
+  return input.split('').map(
     letter => {
       return vowel[letter.toLowerCase()] ? vowel[letter.toLowerCase()] : letter
     }
@@ -54,19 +58,19 @@ function leet(input) {
 console.log(leet('anaconda'))
 
 function verlan(input) {
-  if (typeof input != 'string') return input
+  if (!input || typeof input != 'string') return input
   return input.split(' ').map(word => word.split('').reverse().join('')).join(' ')
 }
 console.log(verlan('hello world'))
 
 function yoda(input) {
-  if (typeof input != 'string') return input
+  if (!input || typeof input != 'string') return input
   return input.split(' ').reverse().join(' ')
 }
 console.log(yoda('Hello world'))
 
 function vig(input, key) {
-  if (typeof input != 'string') return input
+  if (!input || typeof input != 'string') return input
   alphabet = "abcdefghijklmnopqrstuvwxyz".split('')
   output = ''
   for (i = 0; i < input.length; i++) {
