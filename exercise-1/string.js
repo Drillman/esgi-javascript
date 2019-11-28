@@ -72,6 +72,8 @@ console.log(yoda('Hello world'))
 function vig(input, key) {
   if (!input || typeof input != 'string') return input
   alphabet = "abcdefghijklmnopqrstuvwxyz".split('')
+  input = formatString(input)
+  key = formatString(key)
   output = ''
   for (i = 0; i < input.length; i++) {
     inputLetter = input[i];
@@ -82,6 +84,7 @@ function vig(input, key) {
   return output
 }
 console.log(vig('wikipedia', 'crypto'))
+console.log(vig('antiConstiTutioNnellement','foo'))
 
 function prop_access(object, path) {
   if (!path || path.length == 0) return object;
