@@ -14,7 +14,7 @@ function ucfirst(input) {
 
 function capitalize(input) {
   if (!input || typeof input != 'string') return ""
-  return formatString(input).split(' ').map(word => {
+  return input.toLowerCase().split(' ').map(word => {
     word = word.split("")
     word[0] = word[0].toUpperCase();
     return word.join('');
@@ -35,7 +35,7 @@ function camelCase(input) {
 
 function snake_case(input) {
   if (!input || typeof input != 'string') return ""
-  return input.split(" ").join("_")
+  return input.toLowerCase().split(" ").join("_")
 }
 // console.log(snake_case('hello world'))
 
@@ -58,7 +58,7 @@ function leet(input) {
 // console.log(leet('anaconda'))
 
 function verlan(input) {
-  if (!input || typeof input != 'string') return input
+  if (!input || typeof input != 'string') return ""
   return input.split(' ').map(word => word.split('').reverse().join('')).join(' ')
 }
 // console.log(verlan('hello world'))
@@ -70,9 +70,9 @@ function yoda(input) {
 // console.log(yoda('Hello world'))
 
 function vig(input, key) {
-  if (!input || typeof input != 'string') return input
+  if (!input || typeof input != 'string') return ""
   alphabet = "abcdefghijklmnopqrstuvwxyz".split('')
-  input = formatString(input)
+  input = input.toLowerCase()
   key = formatString(key)
   output = ''
   for (i = 0; i < input.length; i++) {
