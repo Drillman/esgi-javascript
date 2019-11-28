@@ -8,9 +8,9 @@ function ucfirst(input) {
   input[0] = input[0].toUpperCase()
   return input.join("");
 }
-console.log(ucfirst('hello world'))
-console.log(ucfirst(null))
-console.log(ucfirst({test: 'hello world'}))
+// console.log(ucfirst('hello world'))
+// console.log(ucfirst(null))
+// console.log(ucfirst({test: 'hello world'}))
 
 function capitalize(input) {
   if (!input || typeof input != 'string') return ""
@@ -20,8 +20,8 @@ function capitalize(input) {
     return word.join('');
   }).join(' ')
 }
-console.log(capitalize('hello world'))
-console.log(capitalize('_hello world'))
+// console.log(capitalize('hello world'))
+// console.log(capitalize('_hello world'))
 
 function camelCase(input) {
   if (!input || typeof input != 'string') return ""
@@ -31,13 +31,13 @@ function camelCase(input) {
     return word.join('');
   }).join("")
 }
-console.log(camelCase('hello world'))
+// console.log(camelCase('hello world'))
 
 function snake_case(input) {
   if (!input || typeof input != 'string') return ""
   return input.split(" ").join("_")
 }
-console.log(snake_case('hello world'))
+// console.log(snake_case('hello world'))
 
 function leet(input) {
   if (!input || typeof input != 'string') return ""
@@ -55,19 +55,19 @@ function leet(input) {
     }
   ).join('')
 }
-console.log(leet('anaconda'))
+// console.log(leet('anaconda'))
 
 function verlan(input) {
   if (!input || typeof input != 'string') return input
   return input.split(' ').map(word => word.split('').reverse().join('')).join(' ')
 }
-console.log(verlan('hello world'))
+// console.log(verlan('hello world'))
 
 function yoda(input) {
   if (!input || typeof input != 'string') return input
   return input.split(' ').reverse().join(' ')
 }
-console.log(yoda('Hello world'))
+// console.log(yoda('Hello world'))
 
 function vig(input, key) {
   if (!input || typeof input != 'string') return input
@@ -83,8 +83,8 @@ function vig(input, key) {
   }
   return output
 }
-console.log(vig('wikipedia', 'crypto'))
-console.log(vig('antiConstiTutioNnellement','foo'))
+// console.log(vig('wikipedia', 'crypto'))
+// console.log(vig('antiConstiTutioNnellement','foo'))
 
 function prop_access(object, path) {
   if (!path || path.length == 0) return object;
@@ -95,21 +95,22 @@ function prop_access(object, path) {
   }
   var testedObject = object;
   var testedKeys = []
-  for (key of splittedPath) {
+  for (var key of splittedPath) {
     testedKeys.push(key);
     if (testKey(testedObject, key)) {
       if (typeof testedObject[key] == 'object') {
         testedObject = {...testedObject[key]}
       }
     } else {
-      return `${testedKeys.join('.')} not exist`;
+      return console.log(`${testedKeys.join('.')} not exist`);
     }
   }
-  return testedObject[splittedPath[splittedPath.length - 1]];
+  return testedObject[key] ? testedObject[key] : testedObject
 }
 prairie = {
   animal: { type: { name: 'chien'}}
 }
 console.log(prop_access(prairie, 'animal.type.name'))
+console.log(prop_access(prairie, 'animal.type'))
 console.log(prop_access(prairie, 'animal.gender'))
 console.log(prop_access(prairie, null))
