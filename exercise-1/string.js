@@ -88,15 +88,15 @@ function vig(input, key) {
     return output
   }).join(' ')
 }
-console.log("hna prueul xqrs prof lknqxi ohmr due no ieqt kewqsylrnp rsrn zibh gcy g dft fucge qn dhwv")
-console.log(vig('une phrase tres tres longue mais qui ne veut absolument rien dire car c est juste un test','nawakdecheznawak'))
-console.log("hna prueul xqrs prof lknqxi ohmr due no ieqt kewqsylrnp rsrn zibh gcy g dft fucge qn dhwv" == vig('une phrase tres tres longue mais qui ne veut absolument rien dire car c est juste un test','nawakdecheznawak'))
+// console.log("hna prueul xqrs prof lknqxi ohmr due no ieqt kewqsylrnp rsrn zibh gcy g dft fucge qn dhwv")
+// console.log(vig('une phrase tres tres longue mais qui ne veut absolument rien dire car c est juste un test','nawakdecheznawak'))
+// console.log("hna prueul xqrs prof lknqxi ohmr due no ieqt kewqsylrnp rsrn zibh gcy g dft fucge qn dhwv" == vig('une phrase tres tres longue mais qui ne veut absolument rien dire car c est juste un test','nawakdecheznawak'))
 // console.log(vig('wikipedia is shit', 'crypto'))
 // console.log(vig('antiConstiTutioNnellement','foo'))
 
 function prop_access(object, path) {
   if (!path || path.length == 0) return object;
-  if (!object) return `${path} not exist`;
+  if (!object) return console.log(`${path} not exist`);
   splittedPath = path.split('.');
   function testKey(currentObject, value) {
     if (typeof currentObject !== 'object') return false;
@@ -122,4 +122,4 @@ function prop_access(object, path) {
 // console.log(prop_access(prairie, 'animal.type.name'))
 // console.log(prop_access(prairie, 'animal.type'))
 // console.log(prop_access(prairie, 'animal.gender'))
-// console.log(prop_access(prairie, null))
+console.log(prop_access(null, 'test'))
