@@ -22,11 +22,11 @@ function type_check_v2(value, conf) {
         if (!type_check_v1(value, conf.type)) return false;
         continue;
       case 'value' :
-        if (value != conf.value) return false;
+        if (value.toString() != conf.value.toString()) return false;
         continue;
       case 'enum' :
         for (testedValue of conf.enum) {
-          if (testedValue == value) return true;
+          if (testedValue.toString() == value.toString()) return true;
           continue;
         }
         return false;
@@ -34,7 +34,7 @@ function type_check_v2(value, conf) {
   }
   return true;
 }
-
+console.log(type_check_v2({test: 'test'}, {value: {test: 'test'}}))
 
 function type_check_v3(value, conf) {
 
