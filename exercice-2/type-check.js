@@ -22,11 +22,11 @@ function type_check_v2(value, conf) {
         if (!type_check_v1(value, conf.type)) return false;
         continue;
       case 'value' :
-        if (value.toString() != conf.value.toString()) return false;
+        if (JSON.stringify(value) != JSON.stringify(conf.value)) return false;
         continue;
       case 'enum' :
         for (testedValue of conf.enum) {
-          if (testedValue.toString() == value.toString()) return true;
+          if (JSON.stringify(testedValue) == JSON.stringify(value)) return true;
           continue;
         }
         return false;
