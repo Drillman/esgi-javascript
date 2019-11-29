@@ -26,7 +26,7 @@ function type_check_v2(value, conf) {
         continue;
       case 'enum' :
         for (testedValue of conf.enum) {
-          if (testedValue === value) return true;
+          if (testedValue == value) return true;
           continue;
         }
         return false;
