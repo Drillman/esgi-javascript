@@ -61,10 +61,10 @@ function verlan(input) {
 String.prototype.verlan = () => verlan(this)
 
 function yoda(input) {
-  if (!input || typeof input != 'string') return ""
+  if (!input) {input = this}
   return input.split(' ').reverse().join(' ')
 }
-String.prototype.yoda = () => yoda(this)
+String.prototype.yoda = yoda
 
 function vig(input, key) {
   if (!input || typeof input != 'string') return ""
